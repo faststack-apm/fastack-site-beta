@@ -1,0 +1,14 @@
+[
+    {
+        "hostname": "example server",
+        "label": "example server"
+    },
+    {
+        "hostname": "example server 1",
+        "label": "example server.."
+    },
+    {
+        "hostname": "example server 2",
+        "label": "example server..."
+    }
+]

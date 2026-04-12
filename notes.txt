@@ -1,0 +1,14 @@
+Adding new pages:
+
+add route to app.tsx
+add page to pages directory
+add page to menu-service.ts
+add page to appStore.ts
+add page to page-context.ts
+add page to header.tsx
+add page to footer.tsx
+add page to global-chat-modal.tsx
+add page to scroll-to-top-button.tsx
+add page to tooltip-provider.tsx
+add page to toast.tsx
+add page to sonner.tsx
