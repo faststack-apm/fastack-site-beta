@@ -195,3 +195,17 @@
     @apply bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent;
   }
 }
+
+@keyframes alice-3d-loop {
+  0% { transform: perspective(1200px) rotateX(0deg) scale(1); }
+  50% { transform: perspective(1200px) rotateX(0deg) scale(1); }
+  60% { transform: perspective(1200px) rotateX(360deg) scale(1.05); }
+  70% { transform: perspective(1200px) rotateX(720deg) scale(1); }
+  90% { transform: perspective(1200px) rotateX(720deg) scale(1); }
+  100% { transform: perspective(1200px) rotateX(720deg) scale(1); }
+}
+
+.animate-alice-3d {
+  animation: alice-3d-loop 10s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  transform-style: preserve-3d;
+}

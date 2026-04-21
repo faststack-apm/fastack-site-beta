@@ -1,11 +1,12 @@
-"use client";
-
 import Link from "next/link";
 import { FadeInSection } from "@/components/FadeInSection/FadeInSection";
-import { TECH_BLOG_POSTS } from "@/lib/tech-blog-data";
-import { ArrowRight, Calendar, Clock } from "lucide-react";
+import { getAllBlogPosts } from "@/lib/blog-loader";
+import { ArrowRight, Calendar, Clock, ChevronLeft } from "lucide-react";
+import { BlogFooter } from "@/components/Blog/BlogFooter";
 
 export default function TechBlogListingPage() {
+  const posts = getAllBlogPosts('tech');
+
   return (
     <main className="min-h-screen pt-32 pb-20 px-6 bg-transparent relative overflow-hidden">
       {/* Background Decorative Elements */}
@@ -14,6 +15,15 @@ export default function TechBlogListingPage() {
 
       <div className="max-w-5xl mx-auto z-10 relative">
         <div className="space-y-4 mb-16">
+          <FadeInSection delay={100}>
+            <Link
+              href="/"
+              className="flex items-center gap-2 text-muted-foreground hover:text-blue-400 transition-colors mb-6 group/back w-fit"
+            >
+              <ChevronLeft className="w-4 h-4 group-hover/back:-translate-x-1 transition-transform" />
+              Back to Home
+            </Link>
+          </FadeInSection>
           <FadeInSection delay={200}>
             <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight">
               Tech <span className="text-gradient">Journal</span>
@@ -27,7 +37,7 @@ export default function TechBlogListingPage() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {TECH_BLOG_POSTS.map((post, index) => (
+          {posts.map((post, index) => (
             <FadeInSection key={post.slug} delay={400 + index * 100}>
               <Link
                 href={`/tech-blog/${post.slug}`}
@@ -69,6 +79,7 @@ export default function TechBlogListingPage() {
           ))}
         </div>
       </div>
+      <BlogFooter />
     </main>
   );
 }

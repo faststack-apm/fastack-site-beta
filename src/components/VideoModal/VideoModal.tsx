@@ -1,9 +1,12 @@
+"use client";
+
 import { X } from "lucide-react";
 import { useEffect } from "react";
 
 export interface VideoContent {
     url: string;
     title?: string;
+    description?: string;
 }
 
 interface VideoModalProps {
@@ -91,10 +94,15 @@ export function VideoModal({ isOpen, video, onClose }: VideoModalProps) {
                     )}
                 </div>
 
-                {/* Title */}
-                {video.title && (
+                {/* Caption/Description */}
+                {(video.title || video.description) && (
                     <div className="bg-black/60 backdrop-blur-sm px-6 py-3 text-white text-center border-t border-white/10">
-                        <h3 className="font-semibold">{video.title}</h3>
+                        {video.title && <h3 className="font-semibold">{video.title}</h3>}
+                        {video.description && (
+                            <p className="text-sm text-white/70 mt-1 max-w-2xl mx-auto">
+                                {video.description}
+                            </p>
+                        )}
                     </div>
                 )}
             </div>

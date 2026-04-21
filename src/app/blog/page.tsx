@@ -1,11 +1,13 @@
-"use client";
-
 import Link from "next/link";
 import { FadeInSection } from "@/components/FadeInSection/FadeInSection";
-import { BLOG_POSTS } from "@/lib/blog-data";
+import { getAllBlogPosts } from "@/lib/blog-loader";
 import { ArrowRight, Calendar, Clock, ChevronLeft } from "lucide-react";
 
+import { BlogFooter } from "@/components/Blog/BlogFooter";
+
 export default function BlogListingPage() {
+  const posts = getAllBlogPosts();
+
   return (
     <main className="min-h-screen pt-32 pb-20 px-6 bg-transparent relative overflow-hidden">
       {/* Background Decorative Elements */}
@@ -17,7 +19,7 @@ export default function BlogListingPage() {
           <FadeInSection delay={100}>
             <Link
               href="/"
-              className="flex items-center gap-2 text-muted-foreground hover:text-blue-400 transition-colors mb-6 group/back"
+              className="flex items-center gap-2 text-muted-foreground hover:text-blue-400 transition-colors mb-6 group/back w-fit"
             >
               <ChevronLeft className="w-4 h-4 group-hover/back:-translate-x-1 transition-transform" />
               Back to Home
@@ -34,9 +36,8 @@ export default function BlogListingPage() {
             </p>
           </FadeInSection>
         </div>
-
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {BLOG_POSTS.map((post, index) => (
+          {posts.map((post, index) => (
             <FadeInSection key={post.slug} delay={400 + index * 100}>
               <Link
                 href={`/blog/${post.slug}`}
@@ -78,6 +79,8 @@ export default function BlogListingPage() {
           ))}
         </div>
       </div>
+      
+      <BlogFooter />
     </main>
   );
 }
