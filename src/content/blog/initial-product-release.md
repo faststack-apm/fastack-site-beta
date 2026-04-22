@@ -23,3 +23,9 @@ From within the **Flow IDE**, the user is able to make an initial assessment. Th
 
 ## Holistic Performance Measurement
 All too often, page performance is measured solely by the initial loading of the request's HTML resource. But how does that relate to the combined set of all referenced assets? What percentage of the entire request flow is spent on client-side vs. server-side code? Where should optimization efforts truly be focused? These are the questions Fast Stack Flow is built to answer.
+
+# The prposed product roadmap
+
+[The proposed product roadmap||/product-roadmap.png]
+
+We have identified 6 distinct product offerings that in concert will provide end to end observability. As with most product releases, we are following a phased approach, where each product is release as it becomes available. Each offering is designed to work independantly of the others, but also work together to provide a comprehensive solution.

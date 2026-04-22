@@ -33,6 +33,24 @@ export default function PostClient({ post, backUrl, backLabel }: PostClientProps
     setIsImageModalOpen(true);
   };
 
+  const parseInlineMarkdown = (text: string) => {
+    if (!text) return text;
+    
+    // Handle bold (**text**) and italics (*text*)
+    // Using a simple split approach for non-nested markdown
+    const parts = text.split(/(\*\*.*?\*\*|\*.*?\*)/g);
+    
+    return parts.map((part, index) => {
+      if (part.startsWith('**') && part.endsWith('**')) {
+        return <strong key={index} className="text-foreground font-bold">{part.slice(2, -2)}</strong>;
+      }
+      if (part.startsWith('*') && part.endsWith('*')) {
+        return <em key={index} className="italic text-foreground/90">{part.slice(1, -1)}</em>;
+      }
+      return part;
+    });
+  };
+
   const renderContent = (content: string) => {
     if (!content || typeof content !== 'string') return null;
     const lines = content.split('\n');
@@ -51,19 +69,19 @@ export default function PostClient({ post, backUrl, backLabel }: PostClientProps
 
       // Headers
       if (trimmed.startsWith('#### ')) {
-        elements.push(<h4 key={i} className="text-lg mt-6 mb-3 font-bold text-foreground">{trimmed.substring(5)}</h4>);
+        elements.push(<h4 key={i} className="text-lg mt-6 mb-3 font-bold text-foreground">{parseInlineMarkdown(trimmed.substring(5))}</h4>);
         i++; continue;
       }
       if (trimmed.startsWith('### ')) {
-        elements.push(<h3 key={i} className="text-xl mt-8 mb-4 font-bold text-foreground">{trimmed.substring(4)}</h3>);
+        elements.push(<h3 key={i} className="text-xl mt-8 mb-4 font-bold text-foreground">{parseInlineMarkdown(trimmed.substring(4))}</h3>);
         i++; continue;
       }
       if (trimmed.startsWith('## ')) {
-        elements.push(<h2 key={i} className="text-2xl mt-10 mb-5 font-bold text-foreground">{trimmed.substring(3)}</h2>);
+        elements.push(<h2 key={i} className="text-2xl mt-10 mb-5 font-bold text-foreground">{parseInlineMarkdown(trimmed.substring(3))}</h2>);
         i++; continue;
       }
       if (trimmed.startsWith('# ')) {
-        elements.push(<h1 key={i} className="text-3xl mt-12 mb-6 font-bold">{trimmed.substring(2)}</h1>);
+        elements.push(<h1 key={i} className="text-3xl mt-12 mb-6 font-bold">{parseInlineMarkdown(trimmed.substring(2))}</h1>);
         i++; continue;
       }
 
@@ -135,7 +153,7 @@ export default function PostClient({ post, backUrl, backLabel }: PostClientProps
                   } else if (parts.length === 3) {
                     [title, description, path] = parts;
                     // Support [title || thumb || video] for backward compatibility with onboarding demo
-                    const isVideo = /\.(mp4|webm|ogg)$/i.test(path);
+                    const isVideo = /\.(mp4|webm|ogg)$/i.test(path) || /youtube\.com|youtu\.be/i.test(path);
                     const isImg = /\.(png|jpg|jpeg|webp)$/i.test(description);
                     if (isVideo && isImg) {
                       thumb = description;
@@ -145,7 +163,7 @@ export default function PostClient({ post, backUrl, backLabel }: PostClientProps
                     [title, path] = parts;
                   }
 
-                  const isVideo = /\.(mp4|webm|ogg)$/i.test(path);
+                  const isVideo = /\.(mp4|webm|ogg)$/i.test(path) || /youtube\.com|youtu\.be/i.test(path);
                   const type: 'video' | 'image' = isVideo ? 'video' : 'image';
                   
                   if (type === 'image') {
@@ -192,7 +210,7 @@ export default function PostClient({ post, backUrl, backLabel }: PostClientProps
       }
 
       // Default paragraph
-      elements.push(<p key={i} className="mb-4 text-muted-foreground leading-relaxed">{line}</p>);
+      elements.push(<p key={i} className="mb-4 text-muted-foreground leading-relaxed">{parseInlineMarkdown(line)}</p>);
       i++;
     }
 

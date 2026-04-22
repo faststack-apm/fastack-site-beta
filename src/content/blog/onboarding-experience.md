@@ -25,4 +25,4 @@ Security is a large concern in modern applications. Threats are ever-present, an
 
 We have introduced the ability to validate the customer's log format and the ability to integrate seamlessly with our infrastructure.
 
-[Onboarding Flow & Data Ingestion Demo || /flow-onboarding.png || /flow_product_onboarding.mp4]
+[Onboarding Flow & Data Ingestion Demo || /flow-onboarding.png || https://youtu.be/0ZPLPKtJTJo]

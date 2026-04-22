@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 150" width="600" height="150">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@800&amp;display=swap');
+      
+      .stk-letter {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 800;
+        font-size: 72px;
+        fill: #FFFFFF; /* White letters */
+        text-anchor: middle;
+      }
+
+      /* ========================================= */
+      /* ANIMATION: SEQUENTIAL FADE-IN for "FAST"  */
+      /* ========================================= */
+      @keyframes fadeInFast {
+        0%   { opacity: 0; }
+        100% { opacity: 1; }
+      }
+
+      .fast {
+        opacity: 0;
+        animation: fadeInFast 0.5s ease-out forwards;
+      }
+
+      /* Delays for each letter in "FAST" */
+      #fast-f { animation-delay: 0.0s; }
+      #fast-a { animation-delay: 0.5s; }
+      #fast-s { animation-delay: 1.0s; }
+      #fast-t { animation-delay: 1.5s; }
+
+      /* ======================================== */
+      /* ANIMATION: SEQUENTIAL FLIP for "STACK"   */
+      /* ======================================== */
+      @keyframes flipStack {
+        0% {
+          transform: rotateX(-90deg);
+          opacity: 0;
+        }
+        50% {
+          opacity: 1;
+        }
+        100% {
+          transform: rotateX(0deg);
+          opacity: 1;
+        }
+      }
+
+      .stack {
+        opacity: 0;
+        transform-origin: center top; /* Flips forward from the top */
+        animation: flipStack 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+      }
+
+      /* Delays for each letter in "STACK" (starts after FAST finishes at 2.0s) */
+      #stack-s { animation-delay: 2.2s; }
+      #stack-t { animation-delay: 2.4s; }
+      #stack-a { animation-delay: 2.6s; }
+      #stack-c { animation-delay: 2.8s; }
+      #stack-k { animation-delay: 3.0s; }
+
+    </style>
+  </defs>
+
+  <g transform="translate(10, 80)">
+    <text id="fast-f" class="stk-letter fast" x="50" y="0">F</text>
+    <text id="fast-a" class="stk-letter fast" x="110" y="0">A</text>
+    <text id="fast-s" class="stk-letter fast" x="170" y="0">S</text>
+    <text id="fast-t" class="stk-letter fast" x="230" y="0">T</text>
+  </g>
+
+  <g transform="translate(300, 80)">
+    <text id="stack-s" class="stk-letter stack" x="50" y="0">S</text>
+    <text id="stack-t" class="stk-letter stack" x="110" y="0">T</text>
+    <text id="stack-a" class="stk-letter stack" x="170" y="0">A</text>
+    <text id="stack-c" class="stk-letter stack" x="230" y="0">C</text>
+    <text id="stack-k" class="stk-letter stack" x="290" y="0">K</text>
+  </g>
+
+</svg>

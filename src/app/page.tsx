@@ -1,4 +1,6 @@
 "use client";
+import Image from "next/image";
+
 
 import { useState } from "react";
 import { Rocket, Box, Code2, Layout, Zap, Mail, Loader2, CheckCircle2 } from "lucide-react";
@@ -107,12 +109,18 @@ export default function Page() {
               <p className="text-sm text-muted-foreground">From frontend performance to backend database latencies, get a total bird's-eye view of your entire application lifecycle. Track every request, every log, and every metric across your entire distributed architecture.</p>
             </Link>
           </FadeInSection>
+
+
         </div>
 
         {/** Meet Alice Section */}
         <FadeInSection delay={200}>
           <div id="alice" className="mt-20 flex flex-col items-start text-left space-y-4 max-w-2xl w-full mx-auto scroll-mt-24">
             <h2 className="text-2xl font-bold">Meet Alice</h2>
+            <div className="w-full flex justify-center py-4">
+              <Image src="/alice-hero.png" alt="Alice Hero" width={300} height={300} className="rounded-2xl shadow-2xl shadow-blue-500/20" />
+            </div>
+
             <p className="text-muted-foreground text-lg leading-relaxed">
               Experience the power of our proactive AI assistant. Alice monitors your infrastructure 24/7,
               identifying anomalies before they become incidents and providing clear, actionable insights
@@ -125,6 +133,10 @@ export default function Page() {
         <FadeInSection delay={200}>
           <div id="otel" className="mt-20 flex flex-col items-start text-left space-y-4 max-w-2xl w-full mx-auto scroll-mt-24 border-t border-white/5 pt-20">
             <h2 className="text-2xl font-bold">OpenTelemetry (OTEL) Based</h2>
+            <div className="w-full flex justify-center py-4">
+              <Image src="/otel-overview.png" alt="OpenTelemetry Overview" width={600} height={400} className="rounded-2xl shadow-2xl shadow-cyan-500/10" />
+            </div>
+
             <p className="text-muted-foreground text-lg leading-relaxed">
               Built on the industry standard for observability. Seamlessly integrate with your
               existing stacks using vendor-neutral APIs. Collect, process, and export telemetry

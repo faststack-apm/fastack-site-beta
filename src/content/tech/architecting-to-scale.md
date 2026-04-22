@@ -80,14 +80,12 @@ And perhaps a few a endpoints to represent higher level functions. These are low
 
 And now an API wrapper to support the management / visibility ty efforts. A higher level orchestration piece, presenting high level use cases for end operator requests, translating actionable API level calls to to the os level commands required to completed the work.  
 
-[Build Management || UI driven build management approach, not your standard build pipeline, very use case specific || /screen-captures/control-panel/build-mgmnt-thumb.png || /screen-captures/control-panel/build-mgmnt.mp4]
-[Service Management || Visibility into process management, hot configuration reloading (i.e. thread allocations, tennant assignment, etc.) || /screen-captures/control-panel/service-mgmnt-thumb.png || /screen-captures/control-panel/service-mgmnt.mp4]
+[Build Management || UI driven build management approach, not your standard build pipeline, very use case specific || /screen-captures/control-panel/build-mgmnt-thumb.png || https://youtu.be/yGCMi2WI_7Q]
+[Service Management || Visibility into process management, hot configuration reloading (i.e. thread allocations, tennant assignment, etc.) || /screen-captures/control-panel/service-mgmnt-thumb.png || https://youtu.be/vkng8prTrcw]
 
 
 ## The system design
 
-...
+[Backend System Architecture (fancy polished infographic) || A high-level overview of the distributed microservices architecture, including log ingestion, analysis, and analytics pipelines. || /backend-architecture.png]
 
-A core initial decision was to divided the 'application' into seprate projects, essentially 
-
-A typical approach is 
+Apologies up front for the stereotypical inforgraphic above, overkill, perhaps, but it does illustrate the overall approach.In all transparency, I am not 100% sold on a pure Kaftka approach. Impressive technology, yes, high throughput, yes, is it the best fit for interprocess communication? Perhaps, noted that there are certain types of events that are infrequent (we don't switch tenants frequently, so there are a few design trade-offs to consider moving forward i.e. 'do we really need an additional messaging bus vs do we really need to avoid specialized supporting middleware for spealized use cases...  
