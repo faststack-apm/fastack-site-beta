@@ -14,9 +14,9 @@ It turns out, digesting metrics is relatively easy, scaling that effort is hard,
 
 Beyond scalability concerns, uptime is another important topic. Configuration changes, deployments, etc need to be performed in real-time. Interrupting service to customers for these types of changes is not acceptable. It becomes necessary to establish a solution where changes may be introduced in an asynchronous (hot reload) manner, where inbound requests support backpressure. Essentially we need a system that scales infinitely, and aims to provide a no downtime experience. It's harder than it might initially appear.
 
-[The product vision||A comprehensive set of product offerings designed to integrate togehter in order to achieve total end to end observability.||/product-overview.png]
-
 # The Product vision
+
+[The product vision||A comprehensive set of product offerings designed to integrate togehter in order to achieve total end to end observability.||/product-overview.png]
 
 We arrived at a definition of a series of complementary product offerings, that in concert would provide our customers with total end to end observability. Imagine your marketiung team engaging in user behavior patterns and overall experience. Campaign performance, page load times, conversion funnels at their fingertips. Dev ops teams monitoring the health of their infrastructure. Application developers monitoring the performance of their code. A unified platform to bring it all together.
 
