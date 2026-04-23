@@ -41,9 +41,7 @@ export function FadeInSection({
         }
 
         return () => {
-            if (ref.current) {
-                observer.unobserve(ref.current);
-            }
+            observer.disconnect();
         };
     }, [delay]);
 

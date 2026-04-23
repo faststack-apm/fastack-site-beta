@@ -8,12 +8,14 @@ import Link from "next/link";
 import { FadeInSection } from "@/components/FadeInSection/FadeInSection";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import { useMutation } from "@tanstack/react-query";
 
 interface NewsletterSignupPayload {
   name: string;
   orgName: string;
   email: string;
+  comments?: string;
 }
 
 const subscribeNewsletter = async (payload: NewsletterSignupPayload) => {
@@ -33,6 +35,7 @@ export default function Page() {
   const [name, setName] = useState("");
   const [orgName, setOrgName] = useState("");
   const [email, setEmail] = useState("");
+  const [comments, setComments] = useState("");
 
   // TanStack Query Mutation for handling the signup lifecycle
   const signupMutation = useMutation({
@@ -41,13 +44,14 @@ export default function Page() {
       setName("");
       setOrgName("");
       setEmail("");
+      setComments("");
     },
   });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (name && orgName && email) {
-      signupMutation.mutate({ name, orgName, email });
+      signupMutation.mutate({ name, orgName, email, comments });
     }
   };
 
@@ -213,6 +217,20 @@ export default function Page() {
                     disabled={signupMutation.isPending}
                     className="h-12 bg-background/50 border-white/10 hover:border-primary/50 transition-colors pl-4"
                   />
+                </div>
+                <div className="flex flex-col gap-1">
+                  <Textarea
+                    placeholder="Any comments or questions? (optional)"
+                    value={comments}
+                    onChange={(e) => setComments(e.target.value)}
+                    disabled={signupMutation.isPending}
+                    maxLength={1000}
+                    rows={3}
+                    className="bg-background/50 border-white/10 hover:border-primary/50 transition-colors pl-4 resize-none"
+                  />
+                  <p className={`text-xs text-right ${comments.length > 1000 ? "text-red-400" : "text-muted-foreground"}`}>
+                    {comments.length} / 1000
+                  </p>
                 </div>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <Input
