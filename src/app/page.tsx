@@ -19,7 +19,7 @@ interface NewsletterSignupPayload {
 }
 
 const subscribeNewsletter = async (payload: NewsletterSignupPayload) => {
-  const apiBase = process.env.CONTACT_API_ENDPONT ?? "http://localhost:8080";
+  const apiBase = process.env.NEXT_PUBLIC_CONTACT_API_ENDPOINT ?? "http://localhost:8080";
   const res = await fetch(`${apiBase}/api/newsletter/signup`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
